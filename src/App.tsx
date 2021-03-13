@@ -1,11 +1,11 @@
 import React, { FC, useState } from 'react'
 import AddNote from './Components/addNote';
-import Card from './Components/Card';
+import NoteCard from './Components/NoteCard';
 import styles from './App.module.css'
 import CreateCards from './Components/CreateCards';
 
 const App: FC = () => {
-    const [cardList, setCardList] = useState<Array<Card>>([]);
+    const [cardList, setCardList] = useState<Array<NoteCard>>([]);
 
     return (
         <div>

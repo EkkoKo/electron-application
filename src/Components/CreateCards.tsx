@@ -1,16 +1,16 @@
 import React, { FC } from 'react'
-import Card from './Card';
+import NoteCard from './NoteCard';
 import styles from './css/CreateCards.module.css'
 
 
 interface CreateCardsProps {
-    cardList: Card[];
+    cardList: NoteCard[];
 }
 
 const CreateCards: FC<CreateCardsProps> = props => {
     return (
         <div className={styles.cardsBox}>
-            {props.cardList.map((card) => <Card content={card.content} key={`card_${card.content}${Math.random()}`} />)}
+            {props.cardList.map((card) => <NoteCard content={card.content} key={`card_${card.content}${Math.random()}`} />)}
         </div>
     )
 }

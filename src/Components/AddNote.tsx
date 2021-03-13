@@ -1,9 +1,10 @@
+import { Button, TextField } from '@material-ui/core';
 import React, { FC, useState } from 'react';
-import Card from './Card';
+import NoteCard from './NoteCard';
 import styles from './css/AddNote.module.css'
 
 interface AddNoteProps {
-    setCardList: React.Dispatch<React.SetStateAction<Card[]>>
+    setCardList: React.Dispatch<React.SetStateAction<NoteCard[]>>
 }
 
 const AddNote: FC<AddNoteProps> = props => {
@@ -18,10 +19,14 @@ const AddNote: FC<AddNoteProps> = props => {
     }
 
     return (
-        <form onSubmit={handleSubmit} className={styles.form}>
-            <input type="text" onChange={(e) => setContent(e.currentTarget.value)} value={content} />
-            <button>Create New Note!</button>
-        </form>
+        <div>
+            <form onSubmit={handleSubmit} className={styles.form}>
+                <TextField id="outlined-basic" label="Note Content" onChange={(e) => setContent(e.currentTarget.value)} value={content} variant="outlined" />
+                <Button variant="contained" color="secondary" type="submit">
+                Create New Card
+                </Button>
+            </form>
+        </div>
     )
 }
 
