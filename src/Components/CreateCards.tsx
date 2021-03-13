@@ -10,7 +10,7 @@ interface CreateCardsProps {
 const CreateCards: FC<CreateCardsProps> = props => {
     return (
         <div className={styles.cardsBox}>
-            {props.cardList.map((card) => <NoteCard content={card.content} key={`card_${card.content}${Math.random()}`} />)}
+            {props.cardList.map((card) => <NoteCard card={card} key={`card_${card.content}${Math.random()}`} />)}
         </div>
     )
 }

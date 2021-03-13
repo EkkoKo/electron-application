@@ -1,7 +1,12 @@
 .Card {
-  padding: 5rem;
+  /* padding: 5rem; */
   border: 1px solid black;
   margin: 1rem;
+  display: flex;
+  align-content: stretch;
+  flex-direction: column;
+  height: 150%;
+  width: 40%;
   /* height: 5rem; */
   /* padding-left: 1rem; */
 }
