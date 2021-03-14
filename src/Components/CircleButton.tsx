@@ -6,14 +6,18 @@ import NoteCard from './NoteCard';
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
-            position: 'absolute',
-            bottom: 25,
-            right: 25,
+            position: 'sticky',
+            top: 0,
+            marginRight: 'auto',
         },
         circleBtn: {
             padding: '1rem',
             borderRadius: '5rem',
         },
+        flex: {
+            display: 'flex',
+            justifyContent: 'flex-end'
+        }
     })
 );
 
@@ -37,12 +41,14 @@ const CircleButton: FC<CircleButtonProps> = props => {
 
     return (
         <div className={classes.root}>
-            <Button color="primary" variant="contained" className={classes.circleBtn} onClick={handleClickOpen}>
-                <Typography variant="h5" component="h5">
-                    +
-                </Typography>
-            </Button>
-            <FormDialog handleClose={handleClose} open={open} setCardList={props.setCardList} />
+            <div className={classes.flex}>
+                <Button color="primary" variant="contained" className={classes.circleBtn} onClick={handleClickOpen}>
+                    <Typography variant="h5" component="h5">
+                        +
+                    </Typography>
+                </Button>
+                <FormDialog handleClose={handleClose} open={open} setCardList={props.setCardList} />
+            </div>
         </div>
     );
 }

@@ -3,6 +3,7 @@ import NoteCard from './NoteCard';
 import styles from './css/CreateCards.module.css'
 import RedoIcon from '@material-ui/icons/Redo';
 import { Hidden } from '@material-ui/core';
+import { Undo } from '@material-ui/icons';
 
 
 interface CreateCardsProps {
@@ -18,7 +19,7 @@ const CreateCards: FC<CreateCardsProps> = props => {
                     <br />
                     To create a new note click on the + button.</p>
                     <Hidden xsDown={true}>
-                        <RedoIcon color="disabled" style={{fontSize: '200px', position:'absolute',bottom: 200, right: 200, transform: 'rotate(10deg)'}} />
+                        <Undo color="disabled" style={{fontSize: '200px', position:'absolute',top: 200, right: 200, transform: 'rotate(160deg)'}} />
                     </Hidden>
                 </div>}
         </div>

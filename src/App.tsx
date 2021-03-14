@@ -16,8 +16,8 @@ const App: FC = () => {
     return (
         <div>
             {/* <AddNote setCardList={setCardList} /> */}
-            <CreateCards cardList={cardList} />
             <CircleButton setCardList={setCardList} />
+            <CreateCards cardList={cardList} />
         </div>
     )    
 }
