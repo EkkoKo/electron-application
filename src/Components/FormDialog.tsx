@@ -35,7 +35,8 @@ const FormDialog: FC<FormDialogProps> = props => {
             fullWidth
             value={title}
             multiline
-            onChange={(e) => {setTitle(e.currentTarget.value)}}        
+            onChange={(e) => { setTitle(e.currentTarget.value) }}
+            style={{marginBottom:'1.5rem'}}
         />
         <TextField
             margin="dense"
@@ -46,7 +47,7 @@ const FormDialog: FC<FormDialogProps> = props => {
             multiline
             value={content}
             onChange={(e) => {setContnet(e.currentTarget.value)}}       
-            style={{marginTop:'2rem'}}
+            style={{marginBottom:'2rem'}}
           />
         </DialogContent>
         <DialogActions>
