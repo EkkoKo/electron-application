@@ -1,19 +1,21 @@
 import React, { FC } from 'react'
 import NoteCard from './NoteCard';
 import styles from './css/CreateCards.module.css'
-import RedoIcon from '@material-ui/icons/Redo';
 import { Hidden } from '@material-ui/core';
 import { Undo } from '@material-ui/icons';
 
 
 interface CreateCardsProps {
     cardList: NoteCard[];
+    setCardList: React.Dispatch<React.SetStateAction<NoteCard[]>>
+
 }
 
 const CreateCards: FC<CreateCardsProps> = props => {
+    
     return (
         <div className={styles.cardsBox}>
-            {props.cardList.length > 0 ? props.cardList.map((card) => <NoteCard card={card} key={`card_${card.content}${Math.random()}`} />)
+            {props.cardList.length > 0 ? props.cardList.map((card) => <NoteCard setCardList={props.setCardList} card={card} key={`card_${card.content}${Math.random()}`} />)
                 : <div className={styles.noNotesBox}>
                     <p>Sorry but you haven't made any notes yet.
                     <br />

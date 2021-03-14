@@ -4,20 +4,26 @@ import NoteCard from './Components/NoteCard';
 import styles from './App.module.css'
 import CreateCards from './Components/CreateCards';
 import CircleButton from './Components/CircleButton';
-// import storeUserNotes from './data/storeUserNotes';
 
 const App: FC = () => {
     const [cardList, setCardList] = useState<Array<NoteCard>>([]);
     
     useEffect(() => {
-        // setCardList(storeUserNotes.get('cardList'));
+        if (localStorage.getItem('cardList')) {
+            // Data exist
+            setCardList(JSON.parse(localStorage.getItem('cardList')))
+        }
+        else {
+            // Data doesn't exist, need to initialize
+            localStorage.setItem('cardList', JSON.stringify([]))
+        }
     }, [])
 
     return (
         <div>
             {/* <AddNote setCardList={setCardList} /> */}
             <CircleButton setCardList={setCardList} />
-            <CreateCards cardList={cardList} />
+            <CreateCards setCardList={setCardList} cardList={cardList} />
         </div>
     )    
 }

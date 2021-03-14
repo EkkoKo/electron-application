@@ -1,37 +1,35 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from '@material-ui/core';
 import React, { FC, useState } from 'react'
-// import storeUserNotes from '../data/storeUserNotes';
 import getColor from '../utils/getColor';
 import NoteCard from './NoteCard';
 
-const FormDialog: FC<FormDialogProps> = props => {
+const EditDialog: FC<FormDialogProps> = ({card, handleClose, open, setCardList}) => {
 
-    const [title, setTitle] = useState("");
-    const [content, setContnet] = useState("");
+    const [title, setTitle] = useState(card.title);
+    const [content, setContnet] = useState(card.content);
 
     const handleSubmit = () => {
         if (content) {
             if (!title) {
-              setTitle("")
+                setTitle("")
             }
-            const nCard: NoteCard = {content, title, color: getColor(), date: (new Date()).toString()} 
-            props.setCardList((prev) => {
-              localStorage.setItem('cardList', JSON.stringify([...prev, nCard]))
-              return [...prev, nCard]
+            const nCard: NoteCard = {content, title, color: card.color, date: card.date} 
+            setCardList((prev) => {
+              const filterCards = prev.filter(({date}) => new Date(date).getTime() !== new Date(card.date).getTime())
+              localStorage.setItem('cardList', JSON.stringify([...filterCards, nCard]))
+              return [...filterCards, nCard]
             })
-            setTitle("")
-            setContnet("")
-            props.handleClose();
-            console.log('Card Created!')
+            handleClose();
+            console.log('Card Edited!')
         }
   }
     
     return (
-        <Dialog open={props.open} onClose={props.handleClose} aria-labelledby="Form-dialog">
-        <DialogTitle id="Form-dialog">Create A New Note</DialogTitle>
+        <Dialog open={open} onClose={handleClose} aria-labelledby="Edit-dialog">
+        <DialogTitle id="Edit-dialog">Edit Note</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To create a new note enter your note title and content and then press on Create New Note.
+            To edit your note enter your note title and content and then press on Edit Note.
           </DialogContentText>
           <TextField
             autoFocus
@@ -58,11 +56,11 @@ const FormDialog: FC<FormDialogProps> = props => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={props.handleClose} color="primary">
+          <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
           <Button onClick={handleSubmit} color="primary">
-            Create New Note
+            Edit Note
           </Button>
         </DialogActions>
       </Dialog>
@@ -73,6 +71,7 @@ interface FormDialogProps {
     open: boolean;
     handleClose: () => void;
     setCardList: React.Dispatch<React.SetStateAction<NoteCard[]>>;
+    card: NoteCard;
 }
 
-export default FormDialog;
+export default EditDialog;
