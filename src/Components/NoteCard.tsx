@@ -33,11 +33,18 @@ const NoteCard: FC<NoteCardProps> = ({card}) => {
                     <Typography variant="h5" component="h5"  gutterBottom>
                         {card.title}
                     </Typography>
-                    <Button onClick={() => {console.log('here')}}>
-                        <Typography variant="h5" component="h5"  gutterBottom>
-                            X
-                        </Typography>
-                    </Button>
+                    <div>
+                        <Button onClick={() => {console.log('edit')}}>
+                            <Typography variant="h5" component="h5"  gutterBottom>
+                                Edit
+                            </Typography>
+                        </Button>
+                        <Button onClick={() => {console.log('delete')}}>
+                            <Typography variant="h5" component="h5"  gutterBottom>
+                                X
+                            </Typography>
+                        </Button>
+                    </div>
                 </Box>
                 <hr />
                 <Typography variant="body1" component="p" className={classes.content}>
