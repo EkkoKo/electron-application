@@ -4,6 +4,8 @@ import NoteCard from './Components/NoteCard';
 import styles from './App.module.css'
 import CreateCards from './Components/CreateCards';
 import CircleButton from './Components/CircleButton';
+import gql from 'graphql-tag';
+import GetUsers from './data/graphql/GetUsers';
 
 const App: FC = () => {
     const [cardList, setCardList] = useState<Array<NoteCard>>([]);
@@ -22,8 +24,9 @@ const App: FC = () => {
     return (
         <div>
             {/* <AddNote setCardList={setCardList} /> */}
-            <CircleButton setCardList={setCardList} />
-            <CreateCards setCardList={setCardList} cardList={cardList} />
+            <GetUsers />
+            {/* <CircleButton setCardList={setCardList} />
+            <CreateCards setCardList={setCardList} cardList={cardList} /> */}
         </div>
     )    
 }

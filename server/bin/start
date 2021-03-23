@@ -1,0 +1,8 @@
+#!/env/node
+
+require('dotenv/config')
+require('tsconfig-paths').register({
+    baseUrl: '.',
+    paths: { '@/*': ['dist/*'] }
+})
+require('../dist')
